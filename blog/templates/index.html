@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Blog</title>
+</head>
+<body>
+    <h1>Welcome to the Basiima's Flask Blog</h1>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ url_for('show_post', post_id=post['id']) }}">{{ post['title'] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Create a New Post</h2>
+    <form action="{{ url_for('create_post') }}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="4" required></textarea><br>
+
+        <input type="submit" value="Create Post">
+    </form>
+</body>
+</html>
